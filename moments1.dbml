@@ -1,0 +1,120 @@
+enum privacyLevel {
+    onlyMe
+    followers
+    friends [note: 'Alias to public privacy level']
+    closeFriends
+    relatives
+    colleagues
+    seconLevelFriends
+}
+
+enum friendshipType {
+    followers
+    friend [note: 'Default value for relationship']
+    relative
+    closeFriend
+    colleague
+}
+
+Table profile [headercolor: #d35400]{
+    id uuid [pk, not null]
+    name varchar(50) [not null]
+    alias varchar(50) [not null]
+    privacy friendshipType [not null]
+    last_update_at date [not null]
+    creation_date date [not null]
+}
+
+// Para soportar el inicio de sesión a través de terceros
+// como: Facebook, Google, Apple, etc
+Table identityProvider [headercolor: #d35400] {
+    id int [pk, increment]
+    profile_id uuid [not null, ref: > profile.id]
+    provider_name varchar(50) [not null]
+    last_update_at date [not null]
+    creation_date date [not null]
+    note: 'Allow sign-in with a third-party provider: Facebook, Google, ...'
+}
+
+Table friendship [headercolor: #d35400]{
+    profile_id uuid [not null, ref: > profile.id]
+    friend_id uuid [not null, ref: > profile.id]
+    creation_date date [not null]
+    relationship friendshipType [not null]
+     indexes {
+        (profile_id, friend_id) [pk]
+        (profile_id, relationship) [name:'friendshipIndex' ,unique]
+    }
+}
+
+Table momentSpace {
+    id uuid [pk, not null]
+    profile_id uuid [not null, ref: > profile.id]
+    name varchar(50) [not null]
+    creation_date date [not null]
+    indexes {
+        (profile_id) [name: 'momentSpaceIndex']
+    }
+}
+
+Table moment {
+    id uuid [pk, not null]
+    momentSpace_id uuid [not null, ref: > momentSpace.id]
+    audience privacyLevel [not null]
+    name varchar(50) [not null]
+    created_at date [not null]
+    created_by uuid [not null]
+    last_update_at date [not null]
+    last_update_by uuid [not null]
+    indexes {
+        (audience, momentSpace_id, id) [name:'momentAudienceIndex',unique]
+    }
+}
+
+Table post {
+    id uuid [pk, not null, note: 'Identifier of the post']
+    created_at date [not null]
+    last_update_by uuid [not null]
+    last_update_at date [not null]
+    partitionKey uuid [not null]
+}
+
+Table post2moment {
+    post_id uuid [not null, ref: > post.id]
+    moment_id uuid [not null, ref: > moment.id]
+    audience privacyLevel [not null]
+    created_at date [not null]
+    created_by uuid [not null]
+    indexes {
+        (post_id, moment_id) [name:'postMomentRelationshipIndex', pk]
+    }
+}
+
+// Para crear publicaciones dirigidas específicamente a un grupo
+// de personas.
+//
+// Table group {
+//     id uuid [pk]
+//     name char(256)
+// }
+
+// Table group2profile {
+//     group_id uuid [not null, ref: > group.id]
+//     profile_id uuid [not null, ref: > profile.id]
+//     Indexes {
+//         (group_id, profile_id) [unique]
+//     }
+// }
+
+TableGroup tenant {
+    post
+    moment
+    momentSpace
+    post2moment 
+}
+
+TableGroup manage {
+    profile
+    identityProvider
+    friendship
+}

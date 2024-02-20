@@ -1,0 +1,61 @@
+2024-02-20T18:07:02.808Z
+undefined
+
+2024-02-20T18:08:21.630Z
+undefined
+
+2024-02-20T18:10:27.447Z
+SyntaxError: You have a syntax error at "prueba.sql".
+    at /home/snowdacc/.nvm/versions/node/v18.19.0/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:13
+    at Array.forEach (<anonymous>)
+    at generate (/home/snowdacc/.nvm/versions/node/v18.19.0/lib/node_modules/@dbml/cli/lib/cli/utils.js:39:14)
+    at importHandler (/home/snowdacc/.nvm/versions/node/v18.19.0/lib/node_modules/@dbml/cli/lib/cli/import.js:27:27)
+    at Object.sql2dbml (/home/snowdacc/.nvm/versions/node/v18.19.0/lib/node_modules/@dbml/cli/lib/cli/index.js:27:23)
+    at Object.<anonymous> (/home/snowdacc/.nvm/versions/node/v18.19.0/lib/node_modules/@dbml/cli/bin/sql2dbml.js:4:19)
+    at Module._compile (node:internal/modules/cjs/loader:1356:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1414:10)
+    at Module.load (node:internal/modules/cjs/loader:1197:32)
+    at Module._load (node:internal/modules/cjs/loader:1013:12)
+
+ROOT_ERROR:
+TypeError: Cannot read properties of undefined (reading 'fields')
+    at PostgresASTGen.visitCommentstmt (/home/snowdacc/.nvm/versions/node/v18.19.0/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/ANTLR/ASTGeneration/postgres/PostgresASTGen.js:1010:29)
+    at CommentstmtContext.accept (/home/snowdacc/.nvm/versions/node/v18.19.0/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/ANTLR/parsers/postgresql/PostgreSQLParser.js:3:1928587)
+    at PostgresASTGen.visitStmt (/home/snowdacc/.nvm/versions/node/v18.19.0/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/ANTLR/ASTGeneration/postgres/PostgresASTGen.js:125:27)
+    at StmtContext.accept (/home/snowdacc/.nvm/versions/node/v18.19.0/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/ANTLR/parsers/postgresql/PostgreSQLParser.js:3:1555825)
+    at /home/snowdacc/.nvm/versions/node/v18.19.0/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/ANTLR/ASTGeneration/postgres/PostgresASTGen.js:98:21
+    at Array.map (<anonymous>)
+    at PostgresASTGen.visitStmtmulti (/home/snowdacc/.nvm/versions/node/v18.19.0/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/ANTLR/ASTGeneration/postgres/PostgresASTGen.js:97:18)
+    at StmtmultiContext.accept (/home/snowdacc/.nvm/versions/node/v18.19.0/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/ANTLR/parsers/postgresql/PostgreSQLParser.js:3:1540498)
+    at PostgresASTGen.visitStmtblock (/home/snowdacc/.nvm/versions/node/v18.19.0/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/ANTLR/ASTGeneration/postgres/PostgresASTGen.js:89:23)
+    at StmtblockContext.accept (/home/snowdacc/.nvm/versions/node/v18.19.0/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/ANTLR/parsers/postgresql/PostgreSQLParser.js:3:1539299)
+
+2024-02-20T18:10:56.188Z
+undefined
+
+2024-02-20T18:12:07.561Z
+SyntaxError: You have a syntax error at "prueba.sql".
+    at /home/snowdacc/.nvm/versions/node/v18.19.0/lib/node_modules/@dbml/cli/lib/cli/utils.js:48:13
+    at Array.forEach (<anonymous>)
+    at generate (/home/snowdacc/.nvm/versions/node/v18.19.0/lib/node_modules/@dbml/cli/lib/cli/utils.js:39:14)
+    at importHandler (/home/snowdacc/.nvm/versions/node/v18.19.0/lib/node_modules/@dbml/cli/lib/cli/import.js:27:27)
+    at Object.sql2dbml (/home/snowdacc/.nvm/versions/node/v18.19.0/lib/node_modules/@dbml/cli/lib/cli/index.js:27:23)
+    at Object.<anonymous> (/home/snowdacc/.nvm/versions/node/v18.19.0/lib/node_modules/@dbml/cli/bin/sql2dbml.js:4:19)
+    at Module._compile (node:internal/modules/cjs/loader:1356:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1414:10)
+    at Module.load (node:internal/modules/cjs/loader:1197:32)
+    at Module._load (node:internal/modules/cjs/loader:1013:12)
+
+ROOT_ERROR:
+TypeError: Cannot read properties of undefined (reading 'indexes')
+    at /home/snowdacc/.nvm/versions/node/v18.19.0/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:8:81
+    at Array.forEach (<anonymous>)
+    at peg$c0 (/home/snowdacc/.nvm/versions/node/v18.19.0/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:5:5731)
+    at peg$parseparser (/home/snowdacc/.nvm/versions/node/v18.19.0/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:34:7476)
+    at Object.peg$parse [as parse] (/home/snowdacc/.nvm/versions/node/v18.19.0/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/postgresParser.js:43:402)
+    at Function.parsePostgresToJSON (/home/snowdacc/.nvm/versions/node/v18.19.0/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:115:41)
+    at Parser.parse (/home/snowdacc/.nvm/versions/node/v18.19.0/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/parse/Parser.js:42:32)
+    at Object._import [as import] (/home/snowdacc/.nvm/versions/node/v18.19.0/lib/node_modules/@dbml/cli/node_modules/@dbml/core/lib/import/index.js:11:43)
+    at /home/snowdacc/.nvm/versions/node/v18.19.0/lib/node_modules/@dbml/cli/lib/cli/import.js:27:68
+    at /home/snowdacc/.nvm/versions/node/v18.19.0/lib/node_modules/@dbml/cli/lib/cli/utils.js:42:23
+
